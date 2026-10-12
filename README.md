@@ -1,42 +1,62 @@
-Where to find individual period outputs:
+NOTE that all files are in this repo in Databricks : https://adb-291758323461480.0.azuredatabricks.net/browse/folders/4399643338160207?o=291758323461480
+This Repo is meant for visibility and understanding which files are used for which workflows, as well as the associated validation notebooks. The current Databricks repo is under Lovleen Mishra (i920466), and is
+not set up to be a Git repo. To make any necessary adjustments to the code due to client requests, make a CLONE of an existing notebook for that specific data feed inside this Databricks repo, and test the changes in the cloned file first.
+
+NOTE that Jobs also point to the specific notebooks outlined below. Please make sure that the necessary Jobs are pointing to the correct notebooks every period when doing data feed deliveries, and if any changes are
+made due to client requests, the jobs are modified to point to the correct notebooks. To identify which notebooks are being used in the job, identify and adjust if needed, the filepath in each data feed's respective control notebook. 
+(For example, multi-week-control-nb is a notebook that is ran during the job. Within this notebook, it points to one of the files in this repo, depending on what data feed is being ran. Make sure it is the correct one if any changes are made). 
+
+
+Where to find individual period outputs in Azure:
+
 Basket, store level output - https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/bask_store_files
+
 Dept, store level output - https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/dept_store_files
+
 Once you run a notebook for a specific period or a single/multi-period job, the combined file will be found within the “send” folder in Azure: 
 tmkrprtnrs-users - Microsoft Azure (i920466/ap-pos-feed/send)
 
 Data Feed Core POS:
 01_cmm_pos_feed_adweek - Databricks
+
 Single Period and Multi-Period CORE POS Jobs:
 CMM POS Feed BAU - Single-Group - Databricks
 CMM POS Feed BAU - Multi-Group - Databricks
+
 Validation:
 Validate Period Updates - Databricks
 
 Data Feed OMNI:
 Cloned_01_cmm_pos_feed_OMNI_hhs_david_update_april_2026 - Databricks
 Single Period and Multi-Period OMNI Jobs:
+
 CMM POS Feed Omnichannel - Single-Group - Databricks
 CMM POS Feed Omnichannel - Multi-Group - Databricks
+
 Validation:
 Validate Omnichannel Updates - Databricks
 
 Data Feed ECOMM:
 Cloned_01_cmm_pos_feed_ECOMM_hhs_david_update_april_2026 - Databricks
+
 Single Period and Multi-Period ECOMM Jobs:
 CMM POS Feed Ecomm - Single-Group - Databricks
 CMM POS Feed Ecomm - Multi-Group - Databricks
+
 Validation:
 Validate Ecomm - Databricks
 
 Competitor Feed:
 035_competitor_effogeo - Databricks
 -	Use Cell 8 instead of 7 for fiscal date initialization when running restatement – otherwise use cell 7 for single period competitor pull
+  
 Validation:
 Validate Competitor - Databricks
 
 Storeless/Birmingham Feed:
 Cloned_01_cmm_pos_feed_storeless_hhs_david_update_april_2026 - Databricks
 -	Export output of Cell 42 into Excel. Should be 4 rows per period (1 row per Fiscal Week of Birmingham fulfillment center store code 540_00042)
+  
 Validation:
 Validate_Storeless_New - Databricks
 
