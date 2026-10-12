@@ -1,79 +1,122 @@
-NOTE that all files are in this repo in Databricks : https://adb-291758323461480.0.azuredatabricks.net/browse/folders/4399643338160207?o=291758323461480
-This Repo is meant for visibility and understanding which files are used for which workflows, as well as the associated validation notebooks. The current Databricks repo is under Lovleen Mishra (i920466), and is
-not set up to be a Git repo. To make any necessary adjustments to the code due to client requests, make a CLONE of an existing notebook for that specific data feed inside this Databricks repo, and test the changes in the cloned file first.
+# CMM POS Data Feeds – README
 
-NOTE that Jobs also point to the specific notebooks outlined below. Please make sure that the necessary Jobs are pointing to the correct notebooks every period when doing data feed deliveries, and if any changes are
-made due to client requests, the jobs are modified to point to the correct notebooks. To identify which notebooks are being used in the job, identify and adjust if needed, the filepath in each data feed's respective control notebook. 
-(For example, multi-week-control-nb is a notebook that is ran during the job. Within this notebook, it points to one of the files in this repo, depending on what data feed is being ran. Make sure it is the correct one if any changes are made). 
+## Overview
 
+All files are located in this Databricks repo:
+[CMM POS Feed Repo](https://adb-291758323461480.0.azuredatabricks.net/browse/folders/4399643338160207?o=291758323461480)
 
-Where to find individual period outputs in Azure:
+This repo provides **visibility into which files are used for which workflows**, along with their associated **validation notebooks**.
 
-Basket, store level output - https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/bask_store_files
+- **Owner:** Lovleen Mishra (i920466)
+- **Note:** This Databricks repo is **not** set up as a Git repo.
 
-Dept, store level output - https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/dept_store_files
+---
 
-Once you run a notebook for a specific period or a single/multi-period job, the combined file will be found within the “send” folder in Azure: 
-tmkrprtnrs-users - Microsoft Azure (i920466/ap-pos-feed/send)
+## Important Notes
 
-Data Feed Core POS:
-01_cmm_pos_feed_adweek - Databricks
+### Making Code Changes (Client Requests)
+1. **Clone** the existing notebook for the specific data feed **inside this Databricks repo**.
+2. **Test all changes in the cloned file first.** Do not edit the original notebook directly.
 
-Single Period and Multi-Period CORE POS Jobs:
-CMM POS Feed BAU - Single-Group - Databricks
-CMM POS Feed BAU - Multi-Group - Databricks
+### Jobs & Control Notebooks
+- Jobs point to the **specific notebooks** listed below.
+- **Every period** during data feed deliveries, confirm that each Job points to the **correct notebook**.
+- If changes are made due to client requests, **update the Jobs** to point to the new notebooks.
+- To check which notebook a Job uses, review and adjust (if needed) the **filepath in each data feed's control notebook**.
 
-Validation:
-Validate Period Updates - Databricks
+> **Example:** `multi-week-control-nb` runs during the Job and points to one of the files in this repo, depending on which data feed is being run. If any changes are made, make sure it points to the correct file.
 
-Data Feed OMNI:
-Cloned_01_cmm_pos_feed_OMNI_hhs_david_update_april_2026 - Databricks
-Single Period and Multi-Period OMNI Jobs:
+---
 
-CMM POS Feed Omnichannel - Single-Group - Databricks
-CMM POS Feed Omnichannel - Multi-Group - Databricks
+## Azure Output Locations
 
-Validation:
-Validate Omnichannel Updates - Databricks
+| Output | Location |
+|---|---|
+| **Basket, store-level** (per period) | https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/bask_store_files |
+| **Dept, store-level** (per period) | https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/dept_store_files |
+| **Combined file** (after running a notebook or single/multi-period Job) | `tmkrprtnrs-users/l920466/ap-pos-feed/send` |
 
-Data Feed ECOMM:
-Cloned_01_cmm_pos_feed_ECOMM_hhs_david_update_april_2026 - Databricks
+---
 
-Single Period and Multi-Period ECOMM Jobs:
-CMM POS Feed Ecomm - Single-Group - Databricks
-CMM POS Feed Ecomm - Multi-Group - Databricks
+## Data Feeds
 
-Validation:
-Validate Ecomm - Databricks
+### 1. Core POS
+- **Notebook:** `01_cmm_pos_feed_adweek`
+- **Jobs:**
+  - CMM POS Feed BAU – Single-Group
+  - CMM POS Feed BAU – Multi-Group
+- **Validation:** Validate Period Updates
 
-Competitor Feed:
-035_competitor_effogeo - Databricks
--	Use Cell 8 instead of 7 for fiscal date initialization when running restatement – otherwise use cell 7 for single period competitor pull
-  
-Validation:
-Validate Competitor - Databricks
+### 2. Omnichannel (OMNI)
+- **Notebook:** `Cloned_01_cmm_pos_feed_OMNI_hhs_david_update_april_2026`
+- **Jobs:**
+  - CMM POS Feed Omnichannel – Single-Group
+  - CMM POS Feed Omnichannel – Multi-Group
+- **Validation:** Validate Omnichannel Updates
 
-Storeless/Birmingham Feed:
-Cloned_01_cmm_pos_feed_storeless_hhs_david_update_april_2026 - Databricks
--	Export output of Cell 42 into Excel. Should be 4 rows per period (1 row per Fiscal Week of Birmingham fulfillment center store code 540_00042)
-  
-Validation:
-Validate_Storeless_New - Databricks
+### 3. Ecommerce (ECOMM)
+- **Notebook:** `Cloned_01_cmm_pos_feed_ECOMM_hhs_david_update_april_2026`
+- **Jobs:**
+  - CMM POS Feed Ecomm – Single-Group
+  - CMM POS Feed Ecomm – Multi-Group
+- **Validation:** Validate Ecomm
 
-Division Level KPI Tree:
-Geography Deep Dive - Power BI
--	Geography Breakdown, Link above is to Bookmarked report that I built within the MIR dashboard.
--	Point of contact: Tripp Patterson
+### 4. Competitor
+- **Notebook:** `035_competitor_effogeo`
+- **Fiscal date initialization:**
+  - **Single-period pull:** use **Cell 7**
+  - **Restatement:** use **Cell 8** (instead of Cell 7)
+- **Validation:** Validate Competitor
 
-AP / Mutinex will ask for data feeds every period, including restatements a few times a year. In addition, if any data feed logic were to be changed (such as department to sub-department, granularity of data, etc.), a restatement will need to happen as well. Once all data feeds are delivered, we will get a file back for QA. Not sure if Mutinex will send us QA files in the same format as AP, so the validation notebooks may need to be changed (?)
-Data Validation Steps:
-1.	Once AP receives the files, they will process and then send us data validation files for each of the 4 runs (expect them in 2-4 days)
-2.	These files are uploaded to the Adapta portal
-3.	I download, and manually upload these files to the azure portal location https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/qa/  {create folder with fiscal month of runs here}
-4.	In the QA/fiscal month folder, create folders labeled as follows and upload the correct file to each folder
-a.	Core POS (the file will be named POS Data Review) goes in a folder named from-ap 
-b.	Ecomm HHs by preferred division (the file will be named Ecomm HHs POS Data Review) goes in a folder named from-ap-ecom
-c.	Omnichannel HHs data (the file will be named Omni HHs POS Data Review) goes in a folder named from-ap-omni
-d.	Competitor data review files go in a folder named from-ap-comp
-e.	Storeless data review files go in a folder named from-ap-storeless.
-5.	To run the data validation notebooks, you’ll need to change the run date in the parameters to the date the workflow ran (ignore the fiscal date unless you had to run the notebook multiple times) and ensure all the paths to the QA folder are properly updated with the correct fiscal month. After that, you should be able to run, and if it runs through without erroring out, the data is validated. 
+### 5. Storeless / Birmingham
+- **Notebook:** `Cloned_01_cmm_pos_feed_storeless_hhs_david_update_april_2026`
+- **Output:** Export the output of **Cell 42** to Excel.
+  - Expect **4 rows per period**, one row per fiscal week for the Birmingham fulfillment center (store code **`540_00042`**).
+- **Validation:** Validate_Storeless_New
+
+---
+
+## Division Level KPI Tree
+- **Report:** Geography Deep Dive (Power BI)
+- **Details:** Geography breakdown. The link goes to a bookmarked report built within the **MIR dashboard**.
+- **Point of Contact:** Tripp Patterson
+
+---
+
+## Delivery Cadence
+- **AP / Mutinex** request data feeds **every period**.
+- **Restatements** are requested a few times a year.
+- A **restatement is also required** whenever data feed logic changes (e.g., department → sub-department, change in data granularity).
+- After all feeds are delivered, a **QA file** is sent back.
+
+> **Open question:** It's not yet confirmed whether Mutinex will send QA files in the same format as AP. The validation notebooks may need to be updated.
+
+---
+
+## Data Validation (QA) Process
+
+### Step 1: Receive QA Files
+After processing, AP sends **data validation files for each of the 4 runs** (expect them within **2–4 days**). These files are uploaded to the **Adapta portal**.
+
+### Step 2: Upload to Azure
+1. Download the files from the Adapta portal.
+2. Manually upload them to:
+   https://sa8451krprtnrdev.blob.core.windows.net/tmkrprtnrs-users/l920466/ap-pos-feed/qa/
+3. **Create a folder named for the fiscal month** of the runs.
+
+### Step 3: Organize Files by Feed
+Inside the fiscal month folder, create the following subfolders and upload each file to the matching one:
+
+| Feed | File Name | Folder |
+|---|---|---|
+| **Core POS** | POS Data Review | `from-ap` |
+| **Ecomm HHs** (by preferred division) | Ecomm HHs POS Data Review | `from-ap-ecom` |
+| **Omnichannel HHs** | Omni HHs POS Data Review | `from-ap-omni` |
+| **Competitor** | Competitor Data Review | `from-ap-comp` |
+| **Storeless** | Storeless Data Review | `from-ap-storeless` |
+
+### Step 4: Run Validation Notebooks
+1. Set the **run date** parameter to the **date the workflow ran**.
+   - Ignore the fiscal date parameter **unless** the notebook had to be run multiple times.
+2. Update **all QA folder paths** to the correct **fiscal month**.
+3. Run the notebook. **If it completes without errors, the data is validated.** 
