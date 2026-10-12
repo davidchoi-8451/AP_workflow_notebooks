@@ -78,6 +78,7 @@ This repo provides **visibility into which files are used for which workflows**,
 - **Report:** Geography Deep Dive (Power BI)
 - **Details:** Geography breakdown. The link goes to a bookmarked report built within the **MIR dashboard**.
 - **Point of Contact:** Tripp Patterson
+- https://app.powerbi.com/groups/me/apps/c2f93e3c-4941-4326-9bb7-21bd0414c998/reports/e2953654-b692-4ce5-a738-8069a04778e0/56ba1c4b636509354045?ctid=5f9dc6bd-f38a-454a-864c-c803691193c5&experience=power-bi
 
 ---
 
@@ -87,7 +88,7 @@ This repo provides **visibility into which files are used for which workflows**,
 - A **restatement is also required** whenever data feed logic changes (e.g., department → sub-department, change in data granularity).
 - After all feeds are delivered, a **QA file** is sent back.
 
-> **Open question:** It's not yet confirmed whether Mutinex will send QA files in the same format as AP. The validation notebooks may need to be updated.
+> **NOTE:** It's not yet confirmed whether Mutinex will send QA files in the same format as AP. The validation notebooks may need to be updated.
 
 ---
 
