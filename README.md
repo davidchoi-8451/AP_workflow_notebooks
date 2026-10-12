@@ -6,9 +6,7 @@ All files are located in this Databricks repo:
 [CMM POS Feed Repo](https://adb-291758323461480.0.azuredatabricks.net/browse/folders/4399643338160207?o=291758323461480)
 
 This repo provides **visibility into which files are used for which workflows**, along with their associated **validation notebooks**.
-
-- **Owner:** Lovleen Mishra (i920466)
-- **Note:** This Databricks repo is **not** set up as a Git repo.
+- **Note:** This Databricks repo is **not** set up as a Git repo. The repo is under I920466 (Lovleen Mishra)'s directory, in the ap-feed-hhs repo. If there are data feed changes to be made, clone the notebook corresponding to the data feed that needs adjustment, and test changes there.
 
 ---
 
