@@ -17,10 +17,10 @@ This repo provides **visibility into which files are used for which workflows**,
 2. **Test all changes in the cloned file first.** Do not edit the original notebook directly.
 
 ### Simple Summary: 
-Main notebooks are used to generate basket and department level reports (some notebooks only generate one file, such as competitive and storeless). 
-Control Files is the notebook that contains the path of the main notebooks to run in the databricks job. 
-Group Files groups all of the multiple runs of the control files into singular reports (control files ran per period/week)
-Validation notebooks are used (instructions below) to validate that the client's numbers are accurate.
+- Main notebooks are used to generate basket and department level reports (some notebooks only generate one file, such as competitive and storeless). 
+- Control Files is the notebook that contains the path of the main notebooks to run in the databricks job. 
+- Group Files groups all of the multiple runs of the control files into singular reports (control files ran per period/week)
+- Validation notebooks are used (instructions below) to validate that the client's numbers are accurate.
 
 ### Jobs & Control Notebooks
 - Jobs point to the **specific notebooks** listed below.
